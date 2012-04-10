@@ -40,8 +40,9 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DirectShowLib-2005">
-      <HintPath>..\..\..\DirectShowLib-2005.dll</HintPath>
+    <Reference Include="DirectShowLib-2005, Version=2.1.0.0, Culture=neutral, PublicKeyToken=67e7b740cdfc2d3f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\DirectShowLib-2005.dll</HintPath>
     </Reference>
     <Reference Include="Ookii.Dialogs.Wpf, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0c15020868fd6249, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -146,6 +147,7 @@
     <Content Include="cygz.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="DirectShowLib-2005.dll" />
     <Content Include="libiconv2.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -158,6 +160,8 @@
     <Content Include="Ookii.Dialogs.Wpf.dll" />
     <None Include="Resources\ph-mb-logo.png" />
     <Resource Include="readme.txt" />
+    <Content Include="pHM.DVBLib.Common.dll" />
+    <Content Include="pHM.DVBLib.TransportStream.dll" />
     <Content Include="unsquashfs.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
