@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Class taken from http://stackoverflow.com/questions/2095437/c-sharp-how-do-you-search-a-large-text-file-for-a-string-without-going-line-by
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
