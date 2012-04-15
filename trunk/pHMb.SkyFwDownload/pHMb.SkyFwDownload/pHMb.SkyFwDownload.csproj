@@ -81,6 +81,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Classes\BinaryConfigReader.cs" />
+    <Compile Include="Classes\ConfigFileDescriptor.cs" />
+    <Compile Include="Classes\BinConfigFile.cs" />
+    <Compile Include="Classes\ConfigKeyValuePair.cs" />
+    <Compile Include="Classes\ConfigSectionDescriptor.cs" />
     <Compile Include="Windows\AboutBox.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -20,6 +20,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using pHM.DVBLib.Common;
+using System.Text.RegularExpressions;
 
 namespace pHMb.TS_Demux
 {
@@ -50,6 +51,8 @@ namespace pHMb.TS_Demux
         };
 
         public Dictionary<string, Extractors.IFirmwareExtractor> ExtractorList { get; set; }
+
+        public string EPGVersion { get; private set; }
 
         public string FileName
         {
@@ -215,6 +218,9 @@ namespace pHMb.TS_Demux
             FileInfo fwInfo = new FileInfo(Path.Combine(folderPath, FileName));
             FileSize = (uint)fwInfo.Length;
             BytesCompleted = (uint)fwInfo.Length;
+
+            GetVersion();
+
             isComplete = true;
         }
 
@@ -254,6 +260,7 @@ namespace pHMb.TS_Demux
                             try
                             {
                                 currentExtractor.ExtractParts(Path.Combine(fwDir.FullName, FileName));
+                                GetVersion();
                             }
                             catch (Exception ex)
                             {
@@ -267,6 +274,21 @@ namespace pHMb.TS_Demux
             else
             {
                 return false;
+            }
+        }
+
+        private void GetVersion()
+        {
+            if (File.Exists(System.IO.Path.Combine(SaveDirectory, BaseName, @"config\version.cfg")))
+            {
+                string versionIniFile = File.ReadAllText(System.IO.Path.Combine(SaveDirectory, BaseName, @"config\version.cfg"));
+
+                Match match = Regex.Match(versionIniFile, "NDS_SW_VERSION=\"?([^\r\n]*)\"?");
+
+                if (match.Success)
+                {
+                    EPGVersion = match.Groups[1].Value;
+                }
             }
         }
     }

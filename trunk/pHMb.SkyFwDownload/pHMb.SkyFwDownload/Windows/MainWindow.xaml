@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:my="clr-namespace:pHMb.TS_Demux"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
-        Title="Sky Firmware Downloader" Height="608" Width="936" Closing="Window_Closing" Loaded="Window_Loaded">
+        Title="Sky Firmware Downloader" Height="608" Width="1001" Closing="Window_Closing" Loaded="Window_Loaded">
     <Window.Resources>
         <my:FileSizeConverter x:Key="FileSizeConverter"></my:FileSizeConverter>
     </Window.Resources>
@@ -47,6 +47,7 @@
                 <ListView.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="Open Folder" FontWeight="Bold" Click="MenuItemOpenFolder_Click" />
+                        <MenuItem Header="Extract" Click="MenuItemExtract_Click" />
                     </ContextMenu>
                 </ListView.ContextMenu>
                 <ListView.View>
@@ -55,8 +56,10 @@
                         DisplayMemberBinding="{Binding VendorName}"  />
                         <GridViewColumn Width="150"  Header="Model" 
                         DisplayMemberBinding="{Binding ModelName}" />
-                        <GridViewColumn Width="70"  Header="Version" 
+                        <GridViewColumn Width="70"  Header="Version ID" 
                         DisplayMemberBinding="{Binding VersionId}" />
+                        <GridViewColumn Width="155"  Header="EPG Version" 
+                        DisplayMemberBinding="{Binding EPGVersion}" />
                         <GridViewColumn Width="100"  Header="Size" 
                         DisplayMemberBinding="{Binding FileSize, Converter={StaticResource FileSizeConverter}}" />
                         <GridViewColumn Width="140"  Header="Date Downloaded" 

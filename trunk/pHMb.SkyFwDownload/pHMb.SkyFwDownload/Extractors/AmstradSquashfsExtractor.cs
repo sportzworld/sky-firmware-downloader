@@ -68,7 +68,7 @@ namespace pHMb.TS_Demux.Extractors
 
                     string appDir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
-                    if (Directory.Exists(Path.Combine(extractDir, "rootfs"))) Directory.Delete(Path.Combine(extractDir, "rootfs"));
+                    //if (Directory.Exists(Path.Combine(extractDir, "rootfs"))) Directory.Delete(Path.Combine(extractDir, "rootfs"));
 
                     Process unsquashProcess = new Process();
                     unsquashProcess.StartInfo.FileName = Path.Combine(appDir, "unsquashfs.exe");
@@ -77,6 +77,14 @@ namespace pHMb.TS_Demux.Extractors
 
                     unsquashProcess.Start();
                     unsquashProcess.WaitForExit();
+
+                    if (File.Exists(Path.Combine(extractDir, @"rootfs\NDS\config\bsysconfig.bin")))
+                    {
+                        BinaryConfigReader reader = new BinaryConfigReader(Path.Combine(extractDir, @"rootfs\NDS\config\bsysconfig.bin"), false);
+
+                        Directory.CreateDirectory(Path.Combine(extractDir, "config"));
+                        reader.SaveAsINI(Path.Combine(extractDir, "config"));
+                    }
                 }
             }
         }

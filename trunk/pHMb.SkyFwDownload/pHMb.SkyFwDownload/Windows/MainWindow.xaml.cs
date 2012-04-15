@@ -445,5 +445,14 @@ namespace pHMb.TS_Demux
                 Process.Start(System.IO.Path.Combine(file.SaveDirectory, file.BaseName));
             }
         }
+
+        private void MenuItemExtract_Click(object sender, RoutedEventArgs e)
+        {
+            if (listViewCompleted.SelectedItem != null)
+            {
+                FirmwareFile file = (FirmwareFile)listViewCompleted.SelectedItem;
+                file.Extractor.ExtractParts(System.IO.Path.Combine(file.SaveDirectory, file.BaseName, file.FileName));
+            }
+        }
     }
 }
