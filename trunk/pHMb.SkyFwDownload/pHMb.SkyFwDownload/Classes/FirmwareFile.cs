@@ -164,7 +164,8 @@ namespace pHMb.TS_Demux
                 {"4F70", amstradCpioExtractor},
                 {"4F31", amstradCpioExtractor},
                 {"9730", new Extractors.SamsungExtractor()},
-                {"4F30", new Extractors.AmstradSquashfsExtractor()}
+                {"4F30", new Extractors.AmstradSquashfsExtractor()},
+                {"9F30", new Extractors.PaceExtractor()}
             };
         }
 
