@@ -283,7 +283,7 @@ namespace pHMb.TS_Demux
             {
                 string versionIniFile = File.ReadAllText(System.IO.Path.Combine(SaveDirectory, BaseName, @"config\version.cfg"));
 
-                Match match = Regex.Match(versionIniFile, "NDS_SW_VERSION=\"?([^\r\n]*)\"?");
+                Match match = Regex.Match(versionIniFile, "NDS_SW_VERSION=\"([^\r\n]*)\"");
 
                 if (match.Success)
                 {

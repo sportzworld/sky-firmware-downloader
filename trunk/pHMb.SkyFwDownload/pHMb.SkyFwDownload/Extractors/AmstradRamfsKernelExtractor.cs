@@ -118,7 +118,7 @@ namespace pHMb.TS_Demux.Extractors
 
                                         foreach (string fileName in Directory.EnumerateFiles(Path.Combine(extractDir, @"rootfs\NDS\config"), "*.cfg"))
                                         {
-                                            File.Copy(fileName, Path.Combine(extractDir, "config", Path.GetFileName(fileName)));
+                                            File.Copy(fileName, Path.Combine(extractDir, "config", Path.GetFileName(fileName)), true);
                                         }
                                     }
                                 }
