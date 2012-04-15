@@ -90,6 +90,14 @@ namespace pHMb.TS_Demux.Extractors
 
                                     cpioProcess.Start();
                                     cpioProcess.WaitForExit();
+
+                                    if (File.Exists(Path.Combine(extractDir, @"rootfs\NDS\config\bsysconfig.bin")))
+                                    {
+                                        BinaryConfigReader reader = new BinaryConfigReader(Path.Combine(extractDir, @"rootfs\NDS\config\bsysconfig.bin"), false);
+
+                                        Directory.CreateDirectory(Path.Combine(extractDir, "config"));
+                                        reader.SaveAsINI(Path.Combine(extractDir, "config"));
+                                    }
                                 }
                             }
                         }

@@ -104,6 +104,23 @@ namespace pHMb.TS_Demux.Extractors
 
                                     cpioProcess.Start();
                                     cpioProcess.WaitForExit();
+
+                                    if (File.Exists(Path.Combine(extractDir, @"rootfs\NDS\config\bsysconfig.bin")))
+                                    {
+                                        BinaryConfigReader reader = new BinaryConfigReader(Path.Combine(extractDir, @"rootfs\NDS\config\bsysconfig.bin"), false);
+
+                                        Directory.CreateDirectory(Path.Combine(extractDir, "config"));
+                                        reader.SaveAsINI(Path.Combine(extractDir, "config"));
+                                    }
+                                    else if (File.Exists(Path.Combine(extractDir, @"rootfs\NDS\config\version.cfg")))
+                                    {
+                                        Directory.CreateDirectory(Path.Combine(extractDir, "config"));
+
+                                        foreach (string fileName in Directory.EnumerateFiles(Path.Combine(extractDir, @"rootfs\NDS\config"), "*.cfg"))
+                                        {
+                                            File.Copy(fileName, Path.Combine(extractDir, "config", Path.GetFileName(fileName)));
+                                        }
+                                    }
                                 }
                             }
                         }
