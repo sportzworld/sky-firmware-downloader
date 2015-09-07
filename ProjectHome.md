@@ -1,0 +1,1 @@
+Downloads firmware images for Sky Digital (including Sky+ and Sky+ HD) boxes from the satellite stream using a DVB-S TV Card. Also supports the extraction of the file system from some Sky+ HD images.
